@@ -28,12 +28,14 @@
 
                 <div class="list-group">
                     {% for note in notes %}
-                    <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center note-card mb-2 shadow-sm rounded">
-                        {{ note.content }}
-                        <span class="badge bg-light text-muted" style="font-size: 0.7rem;">
-                            {{ note.date_created.strftime('%H:%M') }}
-                        </span>
-                    </div>
+<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center note-card mb-2 shadow-sm rounded">
+    <div>
+        {{ note.content }}
+        <br>
+        <small class="text-muted" style="font-size: 0.7rem;">{{ note.date_created.strftime('%H:%M') }}</small>
+    </div>
+    <a href="/delete/{{ note.id }}" class="btn btn-sm btn-outline-danger">Delete</a>
+</div>
                     {% endfor %}
                 </div>
             </div>

@@ -40,5 +40,15 @@ def delete_note(id):
     db.session.commit()
     return redirect(url_for('index'))
 
+@app.route('/delete/<int:id>')
+def delete(id):
+    note_to_delete = Note.query.get_or_404(id)
+    try:
+        db.session.delete(note_to_delete)
+        db.session.commit()
+        return redirect('/')
+    except:
+        return 'There was a problem deleting that note'
+
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
