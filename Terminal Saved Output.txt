@@ -1,0 +1,126 @@
+Last login: Sun Jan 11 18:15:04 on ttys000
+indikafernando@Indikas-MacBook-Air ~ % cd my_python_app1
+indikafernando@Indikas-MacBook-Air my_python_app1 % python -m venv venv
+zsh: command not found: python
+indikafernando@Indikas-MacBook-Air my_python_app1 % source venv/bin/activate
+source: no such file or directory: venv/bin/activate
+indikafernando@Indikas-MacBook-Air my_python_app1 % cd path/to/my_python_app1
+cd: no such file or directory: path/to/my_python_app1
+indikafernando@Indikas-MacBook-Air my_python_app1 % nano Procfile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  UW PICO 5.09                                                                                  File: Procfile                                                                                  Modified  
+
+web: gunicorn app:app
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^G Get Help                      ^O WriteOut                      ^R Read File                     ^Y Prev Pg                       ^K Cut Text                      ^C Cur Pos                       
+^X Exit                          ^J Justify                       ^W Where is                      ^V Next Pg                       ^U UnCut Text                    ^T To Spell                      

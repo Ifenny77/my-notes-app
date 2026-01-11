@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Mac Notes</title>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 50px auto; background: #f4f4f4; }
+        .note { background: white; padding: 10px; margin: 10px 0; border-radius: 5px; display: flex; justify-content: space-between; }
+        button { color: red; border: none; background: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>📝 Note to Self</h2>
+    <form action="/add" method="POST">
+        <input type="text" name="content" placeholder="Type a note..." required>
+        <button type="submit" style="color: blue;">Add</button>
+    </form>
+
+    {% for note in notes %}
+    <div class="note">
+        {{ note.content }}
+        <a href="/delete/{{ note.id }}"><button>Delete</button></a>
+    </div>
+    {% endfor %}
+</body>
+</html>
