@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
@@ -11,7 +12,7 @@ db = SQLAlchemy(app)
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
-
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
 # Create the database file automatically
 with app.app_context():
     db.create_all()
