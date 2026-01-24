@@ -29,6 +29,13 @@ class Note(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
+class Note(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String(500), nullable=False)
+    category = db.Column(db.String(50), default='General') # New Column!
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -70,6 +77,26 @@ def login():
             return redirect(url_for('index'))
     return render_template('login.html')
 
+@app.route('/')
+@login_required
+def index():
+    search_query = request.args.get('search')
+    category_filter = request.args.get('category')
+    
+    # Start with all notes belonging to the user
+    query = Note.query.filter_by(user_id=current_user.id)
+    
+    # If searching, filter by content
+    if search_query:
+        query = query.filter(Note.content.contains(search_query))
+    
+    # If filtering by category, filter by category
+    if category_filter:
+        query = query.filter_by(category=category_filter)
+        
+    all_notes = query.order_by(Note.date_created.desc()).all()
+    return render_template('index.html', notes=all_notes)
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -110,3 +137,4 @@ def delete(id):
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+

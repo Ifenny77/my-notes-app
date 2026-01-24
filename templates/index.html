@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note to Self</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/vapor/bootstrap.min.css">
+   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css">
 
     <style>
         body { background-color: #f8f9fa; }
@@ -32,10 +32,16 @@
                 
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
-                        <form action="/add" method="POST" class="input-group">
-                            <input type="text" name="content" class="form-control" placeholder="What's on your mind?" required>
-                            <button type="submit" class="btn btn-primary">Add Note</button>
-                        </form>
+                        <form action="/" method="GET" class="mb-4 d-flex gap-2">
+    <input type="text" name="search" class="form-control" placeholder="Search notes...">
+    <select name="category" class="form-select mb-2">
+    <option value="General">Select Category</option>
+    <option value="Work">Work</option>
+    <option value="Personal">Personal</option>
+    <option value="Ideas">Ideas</option>
+</select>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
                     </div>
                 </div>
 
