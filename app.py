@@ -25,17 +25,11 @@ class User(UserMixin, db.Model):
 
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(200), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
-class Note(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(500), nullable=False)
-    category = db.Column(db.String(50), default='General') # New Column!
+    category = db.Column(db.String(50), default='General')
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
+    
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -103,11 +97,6 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-@app.route('/')
-@login_required
-def index():
-    user_notes = Note.query.filter_by(user_id=current_user.id).all()
-    return render_template('index.html', notes=user_notes)
 
 @app.route('/add', methods=['POST'])
 @login_required
